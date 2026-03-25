@@ -64,6 +64,7 @@ Rules:
 - Keep sentences short
 - No fluff
 - Write like a top creator
+- CRITICAL: Ensure all newlines inside JSON strings are properly escaped as \\n. NEVER use unescaped literal newlines in the JSON output.
 ${insights ? "- IMPORTANT: Apply the performance insights to make these posts BETTER than the previous round" : ""}
 `;
 

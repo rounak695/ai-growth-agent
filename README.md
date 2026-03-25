@@ -115,6 +115,14 @@ This demo shows:
 
 This project reflects how AI-native products are being built today.
 
+## 📊 Sample Output
+
+### Round 1 & Learning Extraction
+![Round 1 Output](./assets/output1.png)
+
+### Round 2 Self-Improved Generation & AI Feedback
+![Round 2 Output](./assets/output2.png)
+
 ## 💻 Getting Started
 
 ### Prerequisites

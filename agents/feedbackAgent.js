@@ -68,3 +68,78 @@ function generateFeedback(score) {
   if (score > 60) return "Moderate engagement";
   return "Needs improvement";
 }
+
+import Groq from "groq-sdk";
+
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
+});
+
+export async function aiFeedback(postText) {
+  const prompt = `
+You are an AI system evaluator designed to simulate real-world content performance without using external APIs.
+
+Your task is to analyze a given social media post and generate a realistic engagement evaluation using internal heuristics.
+
+IMPORTANT CONTEXT:
+- Do NOT assume real user data
+- Do NOT reference actual platform analytics
+- This is a simulated evaluation system
+- You must behave like a growth engineer designing a feedback loop
+
+EVALUATION CRITERIA (use these explicitly):
+1. Hook Strength (Does it grab attention immediately?)
+2. Readability (Short sentences, clarity, flow)
+3. Emotional Trigger (Curiosity, fear, aspiration, urgency)
+4. Structure (Formatting, line breaks, scannability)
+5. Call-to-Action (Does it drive engagement?)
+
+TASK:
+For the given post:
+1. Assign an engagement score (0–100)
+2. Simulate:
+   - likes
+   - impressions
+3. Provide a short explanation of WHY it performed that way
+4. Clearly state that this is a simulated evaluation based on heuristics
+5. Classify the post style: curiosity, contrarian, motivational, data-driven
+
+OUTPUT FORMAT (STRICT JSON):
+
+{
+  "engagementScore": 0,
+  "likes": 0,
+  "impressions": 0,
+  "analysis": {
+    "hookStrength": "...",
+    "readability": "...",
+    "emotionalTrigger": "...",
+    "structure": "...",
+    "ctaEffectiveness": "..."
+  },
+  "postStyle": "...",
+  "finalFeedback": "...",
+  "note": "This evaluation is simulated using engagement heuristics and does not rely on real-world API data."
+}
+
+POST:
+"""
+${postText}
+"""
+`;
+
+  try {
+    const response = await groq.chat.completions.create({
+      model: "llama-3.3-70b-versatile",
+      messages: [{ role: "user", content: prompt }],
+      temperature: 0.7,
+    });
+
+    const match = response.choices[0].message.content.match(/[\[{][\s\S]*[\]}]/);
+    return match ? JSON.parse(match[0]) : null;
+  } catch (err) {
+    console.error("AI Feedback Error:", err);
+    return null;
+  }
+}
+

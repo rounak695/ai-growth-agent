@@ -1,7 +1,7 @@
 import { researchAgent } from "./agents/researchAgent.js";
 import { contentAgent } from "./agents/contentAgent.js";
 import { distributionAgent } from "./agents/distributionAgent.js";
-import { feedbackAgent } from "./agents/feedbackAgent.js";
+import { feedbackAgent, aiFeedback } from "./agents/feedbackAgent.js";
 import { iterationEngine } from "./core/iterationEngine.js";
 import { extractJSON } from "./utils/extractJSON.js";
 import fs from "fs";
@@ -77,6 +77,7 @@ async function main() {
   const improvedContent = extractJSON(improvedContentRaw);
 
   let round2AvgScore = 0;
+  let finalRoundData = null;
 
   if (!improvedContent || improvedContent.length === 0) {
     console.log("⚠️ Round 2 content generation failed.");
@@ -90,12 +91,30 @@ async function main() {
     console.log("━━━ Feedback (Round 2) ━━━");
     const round2 = feedbackAgent(distributed2);
     round2AvgScore = round2.avgScore;
+    finalRoundData = round2;
 
     console.log(`\n📊 Round 2 Avg Score: ${round2AvgScore.toFixed(1)}`);
 
     const improvement = round2AvgScore - avgScore;
     const arrow = improvement > 0 ? "📈" : improvement < 0 ? "📉" : "➡️";
     console.log(`${arrow} Change: ${improvement > 0 ? "+" : ""}${improvement.toFixed(1)} points`);
+
+    // 🔥 DEEP AI EVALUATION FOR BEST POST
+    if (round2.bestPosts.length > 0) {
+      console.log("\n🤖 Triggering Deep AI Evaluation on Top Post...");
+      const topPost = round2.bestPosts[0].post;
+      const aiEval = await aiFeedback(topPost);
+      
+      if (aiEval) {
+        console.log(`\n  [AI INSIGHTS] Post Style: ${aiEval.postStyle || "Unknown"}`);
+        console.log(`  [AI INSIGHTS] Hook Strength: ${aiEval.analysis?.hookStrength || "N/A"}`);
+        console.log(`  [AI INSIGHTS] Readability: ${aiEval.analysis?.readability || "N/A"}`);
+        console.log(`  [AI INSIGHTS] Emotional: ${aiEval.analysis?.emotionalTrigger || "N/A"}`);
+        console.log(`  💡 Final Feedback: ${aiEval.finalFeedback}`);
+        
+        round2.bestPosts[0].aiEvaluation = aiEval;
+      }
+    }
   }
 
   // ─── Save outputs ─────────────────────────────────────────

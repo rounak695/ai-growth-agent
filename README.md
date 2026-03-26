@@ -89,7 +89,7 @@ sequenceDiagram
 
 ## 🎥 Demo
 
-<video src="./assets/Video%20Project.mp4" controls="controls" width="100%"></video>
+https://github.com/rounak695/studious-meme/raw/main/assets/Video%20Project.mp4
 
 This demo shows:
 - End-to-end execution of the agent pipeline  

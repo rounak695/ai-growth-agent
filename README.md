@@ -89,6 +89,9 @@ sequenceDiagram
 
 ## 🎥 Demo
 
+![Demo Preview](./assets/demo_preview.gif)
+
+Click below to download/watch the full video:
 https://github.com/rounak695/studious-meme/raw/main/assets/Video%20Project.mp4
 
 This demo shows:

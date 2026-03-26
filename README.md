@@ -89,7 +89,7 @@ sequenceDiagram
 
 ## 🎥 Demo
 
-> (Add demo video link here)
+<video src="./assets/Video%20Project.mp4" controls="controls" width="100%"></video>
 
 This demo shows:
 - End-to-end execution of the agent pipeline  

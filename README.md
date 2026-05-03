@@ -1,10 +1,10 @@
-# 🚀 Autonomous AI Growth Agent
+#  Autonomous AI Growth Agent
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Welcome to the **Autonomous AI Growth Agent**! An autonomous AI system that replicates how modern startups scale growth using multi-agent architecture and feedback-driven optimization.
 ---
-## 🎯 Why This Matters
+##  Why This Matters
 
 Modern startups are shifting from manual growth teams to **AI-driven distribution systems**.
 
@@ -15,26 +15,26 @@ This project simulates that transition by:
 
 This is a simplified prototype of how next-generation growth platforms operate.
 
-## 🌟 What Makes This Special?
+##  What Makes This Special?
 
 Most AI projects stop at *"Generate a post."*
 **This project builds a self-improving AI system.**
 
 It combines **deterministic scoring** with **LLM-driven insights** to simulate real-world marketing team behaviors. It generates content, tests it against a simulated audience, scores the engagement, learns from what worked, and iterates to become better.
 
-## 🧩 System Architecture
+##  System Architecture
 
 Our agentic pipeline is composed of distinct modules, mimicking a real growth team:
 At its core, the system operates as a closed feedback loop:
 ```mermaid
 graph TD
     A[User Input: Startup Idea] -->|Initiates| B(🔍 Research Agent)
-    B -->|Extracts Audience & Angles| C(✍️ Content Agent)
+    B -->|Extracts Audience & Angles| C( Content Agent)
     
-    C -->|Generates Hooks & Posts| D(📤 Distribution Agent)
-    D -->|Simulates & Schedules| E(📊 Feedback Agent)
+    C -->|Generates Hooks & Posts| D(Distribution Agent)
+    D -->|Simulates & Schedules| E(Feedback Agent)
     
-    E -->|Scores Engagement & Extracts Tops| F(🔁 Iteration Engine)
+    E -->|Scores Engagement & Extracts Tops| F( Iteration Engine)
     
     F -.->|Feeds Insights Back| C
     
@@ -46,7 +46,7 @@ graph TD
     style F fill:#ffb,stroke:#333,stroke-width:2px
 ```
 
-### 🔄 Multi-Agent Data Flow
+###  Multi-Agent Data Flow
 
 The following sequence diagram illustrates how data transforms as it moves through the autonomous pipeline:
 
@@ -54,32 +54,32 @@ The following sequence diagram illustrates how data transforms as it moves throu
 sequenceDiagram
     autonumber
     participant User
-    participant 🔍 Research
-    participant ✍️ Content
-    participant 📤 Distribution
-    participant 📊 Feedback
-    participant 🔁 Iteration
+    participant  Research
+    participant  Content
+    participant  Distribution
+    participant  Feedback
+    participant  Iteration
 
-    User->>🔍 Research: Startup Idea (Text Input)
-    🔍 Research->>✍️ Content: Target Audience, Problems, Angles (JSON)
+    User->> Research: Startup Idea (Text Input)
+    Research->>Content: Target Audience, Problems, Angles (JSON)
     
     rect rgb(240, 248, 255)
-        note right of ✍️ Content: Round 1 Generation
-        ✍️ Content->>📤 Distribution: 5 Viral Posts (JSON Array)
-        📤 Distribution->>📊 Feedback: Simulated Scheduled & Published Posts
-        📊 Feedback->>🔁 Iteration: Engagement Scores, Impressions, Top Posts
+        note right of Content: Round 1 Generation
+         Content->> Distribution: 5 Viral Posts (JSON Array)
+         Distribution->> Feedback: Simulated Scheduled & Published Posts
+         Feedback->>Iteration: Engagement Scores, Impressions, Top Posts
     end
     
-    🔁 Iteration-->>✍️ Content: Learning Insights & Pattern Extraction (JSON)
+     Iteration-->> Content: Learning Insights & Pattern Extraction (JSON)
     
     rect rgb(240, 255, 240)
-        note right of ✍️ Content: Round 2 (Self-Improved)
-        ✍️ Content->>📤 Distribution: 5 Improved Viral Posts
-        📤 Distribution->>📊 Feedback: Scheduled & Published Posts
+        note right of  Content: Round 2 (Self-Improved)
+         Content->>Distribution: 5 Improved Viral Posts
+        Distribution->> Feedback: Scheduled & Published Posts
     end
 ```
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Node.js** - Core runtime
 - **Groq API (`groq-sdk`)** - Cloud-based LLM inference enabling scalable, low-latency agent execution
@@ -87,7 +87,7 @@ sequenceDiagram
 - **File System (`fs`)** - Data persistence and logging
 
 
-## 🎥 Demo
+##  Demo
 
 ![Demo Preview](./assets/demo_preview.gif)
 
@@ -100,7 +100,7 @@ This demo shows:
 - Feedback scoring and iteration loop  
 
 
-## 🔁 Agent Workflow
+##  Agent Workflow
 
 1. **Research Agent:** Converts a raw startup idea into structured intelligence (Audience, Problems, Competitors, Angles).
 2. **Content Generation Agent:** Uses research and persuasion frameworks (Hooks, Pain points, CTA) to generate highly viral social media posts.
@@ -108,7 +108,7 @@ This demo shows:
 4. **Feedback Agent:** Analyzes posts using a deterministic scoring engine based on formatting, psychology, and readability. Simulates likes and impressions.
 5. **Iteration Engine:** The "Brain" that extracts learning signals from top-performing posts and feeds them back into Round 2 of content generation!
 
-## 🧠 What This Demonstrates
+##  What This Demonstrates
 
 - Multi-agent AI system design  
 - Autonomous workflow orchestration  
@@ -118,7 +118,7 @@ This demo shows:
 
 This project reflects how AI-native products are being built today.
 
-## 📊 Sample Output
+##  Sample Output
 
 ### Round 1 & Learning Extraction
 ![Round 1 Output](./assets/output1.png)
@@ -126,7 +126,7 @@ This project reflects how AI-native products are being built today.
 ### Round 2 Self-Improved Generation & AI Feedback
 ![Round 2 Output](./assets/output2.png)
 
-## 💻 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
